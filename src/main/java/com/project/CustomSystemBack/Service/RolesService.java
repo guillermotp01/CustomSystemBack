@@ -14,8 +14,10 @@ public class RolesService {
     @Autowired
     private RolesRepository rolesRepository;
 
-    public void roleInsert(String name, String description) {
-        rolesRepository.roleInsert(name, description);
+    public void insertRole(RolesDto beanDTO) {
+        rolesRepository.insertRole(
+                beanDTO.getName(),
+                beanDTO.getDescription());
     }
 
     public void roleUpdate(Integer id, String name, String description) {

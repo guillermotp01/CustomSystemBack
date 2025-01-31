@@ -16,35 +16,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    /*@Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
-        http
-                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-                .oauth2Login(Customizer.withDefaults());
-
-        return http.build();
-    }*/
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests
-                                .requestMatchers("/**").permitAll()
-                                .anyRequest().authenticated()
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/**").permitAll()
+                        .anyRequest().authenticated()
                 )
-                .formLogin(form ->
-                        form
-                                .loginPage("/login")
-                                .permitAll()
-                )
-                .logout(logout ->
-                        logout
-                                .permitAll()
-                );
+                .formLogin(form -> form.loginPage("/login").permitAll())
+                .logout(logout -> logout.permitAll());
+
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

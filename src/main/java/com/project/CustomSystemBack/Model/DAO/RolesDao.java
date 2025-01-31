@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class RolesDao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

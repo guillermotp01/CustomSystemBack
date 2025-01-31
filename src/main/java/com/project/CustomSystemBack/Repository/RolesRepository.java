@@ -4,13 +4,17 @@ import com.project.CustomSystemBack.Model.DAO.RolesDao;
 import com.project.CustomSystemBack.Model.DTO.RolesDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface RolesRepository extends JpaRepository<RolesDao, Long> {
 
-    @Procedure(name = "roleInsert")
-    void roleInsert(String name, String description);
+    @Procedure(procedureName = "roleInsert")
+    void insertRole(
+            @Param("p_name") String name,
+            @Param("p_description") String description
+    );
 
     @Procedure(name = "roleUpdate")
     void roleUpdate(Integer id, String name, String description);
