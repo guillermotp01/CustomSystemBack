@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,7 +17,8 @@ public class UsersDto {
     private String username;
     private String password;
     private String email;
-    private Boolean enabled;
+    private Boolean isActive;
+    private Integer roleId;
 
     public Integer getId() {
         return id;
@@ -49,11 +52,19 @@ public class UsersDto {
         this.email = email;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }

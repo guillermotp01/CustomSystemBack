@@ -22,6 +22,9 @@ public class UsersDao {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "is_active")
+    private Boolean isActive;
+
+    @Column(name = "role_id")
+    private Integer roleId;
 }
