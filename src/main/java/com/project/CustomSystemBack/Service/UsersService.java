@@ -21,6 +21,7 @@ public class UsersService {
     public void userInsert(UsersDto usersDto) {
         String encodedPassword = passwordEncoder.encode(usersDto.getPassword());
 
+        //DEBEMOS MODIFICAR PORQUE SE LE ESTA ASIGNANDO EL ROL DE ADMIN POR DEFECTO
         if (usersDto.getRoleId() == null) {
             usersDto.setRoleId(1);
         }

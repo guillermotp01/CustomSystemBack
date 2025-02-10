@@ -4,7 +4,6 @@ import com.project.CustomSystemBack.Model.DTO.UsersDto;
 import com.project.CustomSystemBack.Service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,11 +15,9 @@ import java.util.Map;
 @RequestMapping("/users")
 public class UsersController {
 
-
     @Autowired
     private UsersService usersService;
 
-    @Validated
     @PostMapping("/insert")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> insertUser(@RequestBody UsersDto usersDto) {
